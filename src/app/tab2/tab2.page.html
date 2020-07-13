@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title slot="start">
+      Create New Event
+    </ion-title>
+    <ion-button [routerLink]="['/logout']" slot="end" size="small" color="danger">
+      logout
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title slot="start" size="large">Create New Event</ion-title>
+      <ion-button [routerLink]="['/logout']" slot="end" size="large" color="danger">
+        logout
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea type="textarea" required></ion-textarea>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Category</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Start Date</ion-label>
+      <ion-input type="date" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">End Date</ion-label>
+      <ion-input type="date" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Cost</ion-label>
+      <ion-input type="number" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Venue</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Flyer</ion-label>
+      <ion-input slot="end" type="file" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button [routerLink]="['/tabs/tab1']" type="submit" color="danger" expand="block">Create Event</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
