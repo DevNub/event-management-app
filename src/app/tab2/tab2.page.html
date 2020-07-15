@@ -22,47 +22,47 @@
   <form>
     <ion-item lines="full">
       <ion-label position="floating">Title</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input [(ngModel)]="event.title" name="title" type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Description</ion-label>
-      <ion-textarea type="textarea" required></ion-textarea>
+      <ion-textarea [(ngModel)]="event.description" name="description" type="textarea" required></ion-textarea>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Category</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input [(ngModel)]="event.category" name="category" type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Start Date</ion-label>
-      <ion-input type="date" required></ion-input>
+      <ion-datetime [(ngModel)]="event.startDate" displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="startDate"  required></ion-datetime>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">End Date</ion-label>
-      <ion-input type="date" required></ion-input>
+      <ion-datetime [(ngModel)]="event.endDate"  displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="endDate" required></ion-datetime>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Cost</ion-label>
-      <ion-input type="number" required></ion-input>
+      <ion-input [(ngModel)]="event.cost"   name="cost" type="number" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Venue</ion-label>
-      <ion-input type="text" required></ion-input>
+      <ion-input [(ngModel)]="event.venue " name="venue" type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Flyer</ion-label>
-      <ion-input slot="end" type="file" required></ion-input>
+      <ion-input (input)="loadImageFromDevice($event)" slot="end" type="file" accept="image/*" required></ion-input>
     </ion-item>
 
     <ion-row>
       <ion-col>
-        <ion-button [routerLink]="['/tabs/tab1']" type="submit" color="danger" expand="block">Create Event</ion-button>
+        <ion-button (click)="createEvent()" color="danger" expand="block">Create Event</ion-button>
       </ion-col>
     </ion-row>
   </form>
