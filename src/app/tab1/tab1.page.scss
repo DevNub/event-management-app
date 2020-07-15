@@ -1,0 +1,24 @@
+ion-toolbar {
+  --background: #173f5e;
+//   --background: white;
+}
+
+h2 {
+  color: #173f5e;
+  font-weight: bold;
+}
+
+ion-title {
+  color: white;
+//   color: #173f5e;
+}
+
+ion-item > ion-label {
+  font-size: 1em;
+  color: #173f5e;
+}
+
+.cost {
+  color: #173f5e;
+  font-weight: bold;
+}
