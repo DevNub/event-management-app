@@ -24,22 +24,22 @@
 
     <ion-header translucent>
       <ion-toolbar>
-        <ion-segment slot="start" value="all">
-          <ion-segment-button value="all">
-            <ion-label>All</ion-label>
-            <ion-badge>{{(visible | async)?.length}} </ion-badge>
-          </ion-segment-button>
-          <ion-segment-button value="hidden">
-            <ion-label>Hidden</ion-label>
-            <ion-badge color="warning">{{(hidden | async)?.length}}</ion-badge>
-          </ion-segment-button>
-        </ion-segment>
+        <!--ion-list class="ion-align-items-center">
         <!-- Searchbar with cancel button shown on focus -->
-        <ion-searchbar slot="end" showCancelButton="focus"></ion-searchbar>
+        <ion-searchbar style="max-width:300px" slot="start" showCancelButton="focus"></ion-searchbar>
+          <ion-segment slot="start" value="all">
+            <ion-segment-button value="all">
+              <ion-label>All</ion-label>
+              <ion-badge>{{(visible | async)?.length}} </ion-badge>
+            </ion-segment-button>
+            <ion-segment-button value="hidden">
+              <ion-label>Hidden</ion-label>
+              <ion-badge color="warning">{{(hidden | async)?.length}}</ion-badge>
+            </ion-segment-button>
+          </ion-segment>
+        <!--/ion-list -->
       </ion-toolbar>
-
     </ion-header>
-
 
   <!-- List of Sliding Items -->
   <ion-list>

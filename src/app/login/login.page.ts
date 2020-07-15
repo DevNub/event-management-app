@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { ApicallsService } from "../services/apicalls.service";
 import { Subscription } from "rxjs";
+import { ScreensizeService } from '../services/screensize.service';
 
 @Component({
   selector: "app-login",
@@ -15,9 +16,15 @@ export class LoginPage implements OnInit, OnDestroy {
   };
   image: String;
   login: Subscription;
+  isDesktop: boolean;
 
-  constructor(private router: Router, private api: ApicallsService) {
+  constructor(private router: Router, private api: ApicallsService, private screensizeService: ScreensizeService) {
     this.image = "../../assets/imgs/icon.png";
+
+    this.screensizeService.isDesktopView().subscribe(isDesktop => {
+      console.log('Is desktop changed: ', isDesktop);
+      this.isDesktop = isDesktop;
+    });
   }
 
   ngOnInit() {}
