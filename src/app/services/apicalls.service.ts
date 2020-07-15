@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { switchMap, map } from 'rxjs/operators';
+import { Platform } from "@ionic/angular";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApicallsService {
+  private platform: Platform;
 
-  url: string = "http://localhost:5000"
+  url: string ;
   
 
   /**
@@ -50,7 +52,7 @@ export class ApicallsService {
   public submitForm(form: FormData):Observable<any>{
 
     const token = this.getoken();
-    return this.http.post("http://localhost:5000/event",form,{headers:{mode:"cors","x-access-token":token}})
+    return this.http.post(`${this.url}/event`,form,{headers:{mode:"cors","x-access-token":token}})
   }
 
   /**
@@ -104,6 +106,11 @@ export class ApicallsService {
     localStorage.removeItem("token")
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,platform: Platform) {
+    this.platform = platform;
+    // this.url = (!this.platform.is("hybrid"))? "http://10.0.2.2":"http://localhost:5000"
+    this.url =(this.platform.is("mobile"))? "http://10.0.2.2:5000":"http://localhost:5000"
+    // this.url =(this.platform.is("mobile"))? "http://192.168.56.1:5000":"http://localhost:5000"
+   }
 
 }

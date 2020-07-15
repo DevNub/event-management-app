@@ -23,6 +23,7 @@ export class LoginPage implements OnInit,OnDestroy {
   }
 
   navigateToMain(){
+    console.log("android")
     console.log(this.usercred)
     // this.router.navigate(["/tabs"])
    

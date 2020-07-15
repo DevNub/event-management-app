@@ -29,6 +29,7 @@ export class Tab1Page implements OnInit{
 
    this.events =  this.api.getEvents().pipe(map(res=> {
      
+    console.log(this.getImg(res.flyer))
     return res.events.map(res=> ({...res,"flyer":  this.getImg(res.flyer)}))
     }))
    this.visible = this.api.getEvents().pipe(map(data=> data.events.filter((res: { visibility: boolean; })=> res.visibility == true)))
@@ -38,7 +39,7 @@ export class Tab1Page implements OnInit{
   }
 
   async getImg(flyer:string){
-    const res= await fetch(`http://localhost:5000/get-image/${flyer}`,{headers: {mode:"cors"}})
+    const res= await fetch(`${this.api.url}/get-image/${flyer}`,{headers: {mode:"cors"}})
     const blob = await res.blob();
 
     return await this.convertBlobToBase64(blob) as string;

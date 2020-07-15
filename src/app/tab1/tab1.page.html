@@ -53,7 +53,7 @@
     <ion-list>
       <ion-item-sliding *ngFor="let event of (events|async);let i = index;">
         <ion-item >
-        
+          
           <ion-thumbnail slot="start">
             <img [src]="event.flyer|async">
           </ion-thumbnail>
@@ -63,6 +63,7 @@
             <p>Description: {{ event.description }} </p>
             <p>Cost: {{ event.cost }} </p>
             <p>Venue: {{ event.venue }}</p>
+
             <p>Date: {{ dateConvert(event.start_date) }}</p>
             <p>Date: {{ dateConvert(event.end_date) }}</p>
           </ion-label>
