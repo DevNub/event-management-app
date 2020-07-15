@@ -13,10 +13,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  private getoken():string {
+    const token = localStorage.getItem("token");
+    return token
+  }
+
   // User API Methods
-  endpointURL = "localhost:8080/user";
+  endpointURL: string = "http://localhost:5000/user";
   registerUser(user: User) {
     // User is a class defined in the models folder.
-    return this.http.post(`${this.endpointURL}`, user);
+    return this.http.post(`${this.endpointURL}`, user, {headers:{mode:"cors"}});
   }
 }
