@@ -21,7 +21,9 @@ export class Tab2Page {
     file: ""
 
   }
-
+  image: String;
+  calendar: String;
+  
   constructor(private api:ApicallsService,private router: Router,public popover:PopoverController) {
     this.image = "../../assets/imgs/icon.png";
     this.calendar = "../../assets/imgs/calendar.svg";
@@ -43,8 +45,7 @@ export class Tab2Page {
 
 
   createEvent() {
-    image: String;
-    calendar: String;
+    
     console.log(this.event);
     let form = new FormData();
     form.append("title", this.event.title);
