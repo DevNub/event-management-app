@@ -3,9 +3,11 @@
     <ion-title slot="start">
       Create New Event
     </ion-title>
-    <ion-button [routerLink]="['/logout']" slot="end" size="small" color="danger">
-      logout
-    </ion-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="CreatePopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -37,12 +39,12 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Start Date</ion-label>
-      <ion-input type="date" required></ion-input>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="startDate" required></ion-datetime>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">End Date</ion-label>
-      <ion-input type="date" required></ion-input>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="endDate" required></ion-datetime>
     </ion-item>
 
     <ion-item lines="full">
