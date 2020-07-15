@@ -24,4 +24,15 @@ export class UserService {
     // User is a class defined in the models folder.
     return this.http.post(`${this.endpointURL}`, user, {headers:{mode:"cors"}});
   }
+
+  getUsers() {
+    const token = this.getoken();;
+    return this.http.get(`${this.endpointURL}`, {headers:{mode:"cors","x-access-token":token}});
+  }
+
+  getUser(userid:number) {
+    const token = this.getoken();;
+    return this.http.get(`${this.endpointURL}/${userid}`, {headers:{mode:"cors","x-access-token":token}});
+  }
+
 }
