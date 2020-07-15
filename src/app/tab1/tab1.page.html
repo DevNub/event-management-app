@@ -21,18 +21,17 @@
     </ion-button>
   </ion-header>
 
-  <app-container name="Tab 1 page">
 
     <ion-header translucent>
       <ion-toolbar>
         <ion-segment slot="start" value="all">
           <ion-segment-button value="all">
             <ion-label>All</ion-label>
-            <ion-badge>1</ion-badge>
+            <ion-badge>{{(visible | async)?.length}} </ion-badge>
           </ion-segment-button>
           <ion-segment-button value="hidden">
             <ion-label>Hidden</ion-label>
-            <ion-badge color="danger">3</ion-badge>
+            <ion-badge color="danger">{{(hidden | async)?.length}}</ion-badge>
           </ion-segment-button>
         </ion-segment>
         <!-- Searchbar with cancel button shown on focus -->
@@ -44,44 +43,20 @@
 
   <!-- List of Sliding Items -->
   <ion-list>
-    <ion-item-sliding>
-      <ion-item color="primary">
-        <ion-thumbnail slot="start">
-          <img src="./assets/imgs/event.jpg">
-        </ion-thumbnail>
-        <ion-label>
-          <h2>Horror Movie Night</h2>
-          <h3>Category: Films & Animation</h3>
-          <p>Description: Only the best scary movies </p>
-          <p>Cost: 1500 </p>
-          <p>Venue: The Old Drive-in, 221 Bluestreet</p>
-          <p>Date: July 22, 2020</p>
-        </ion-label>
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item-options >
-        <ion-item-option>
-            <ion-label>Visibility</ion-label>
-            <ion-select value="y" cancelText="Cancel" okText="Confirm">
-              <ion-select-option value="y">Visible</ion-select-option>
-              <ion-select-option value="n">Hidden</ion-select-option>
-            </ion-select>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+    <ion-item-sliding *ngFor="let event of (events|async);let i = index;">
+      <ion-item >
 
-    <ion-item-sliding>
-      <ion-item>
         <ion-thumbnail slot="start">
-          <img src="./assets/imgs/event3.png">
+          <img [src]="event.flyer|async">
         </ion-thumbnail>
         <ion-label>
-          <h2>Gary's Garage Sale</h2>
-          <h3>Category: Other</h3>
-          <p>Description: </p>
-          <p>Cost: </p>
-          <p>Venue: </p>
-          <p>Date: </p>
+          <h2>{{ event.title }}</h2>
+          <h3>Category: {{ event.type }}</h3>
+          <p>Description: {{ event.description }} </p>
+          <p>Cost: {{ event.cost }} </p>
+          <p>Venue: {{ event.venue }}</p>
+          <p>Date: {{ dateConvert(event.start_date) }}</p>
+          <p>Date: {{ dateConvert(event.end_date) }}</p>
         </ion-label>
         <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
       </ion-item>
@@ -96,61 +71,11 @@
       </ion-item-options>
     </ion-item-sliding>
 
-    <ion-item-sliding>
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img src="./assets/imgs/event2.jpg">
-        </ion-thumbnail>
-        <ion-label>
-          <h2>Birthday Bash With Beth</h2>
-          <h3>Category: Party</h3>
-          <p>Description: </p>
-          <p>Cost: </p>
-          <p>Venue: </p>
-          <p>Date: </p>
-        </ion-label>
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option>
-            <ion-label>Visibility</ion-label>
-            <ion-select value="n" cancelText="Cancel" okText="Confirm">
-              <ion-select-option value="y">Visible</ion-select-option>
-              <ion-select-option value="n">Hidden</ion-select-option>
-            </ion-select>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+    
 
-    <ion-item-sliding>
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img src="./assets/imgs/event1.jpg">
-        </ion-thumbnail>
-        <ion-label>
-          <h2>Summer Festival 2021</h2>
-          <h3>Category: Concert</h3>
-          <p>Description: </p>
-          <p>Cost: </p>
-          <p>Venue: </p>
-          <p>Date: </p>
-        </ion-label>
-        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option>
-            <ion-label>Visibility</ion-label>
-            <ion-select value="n" cancelText="Cancel" okText="Confirm">
-              <ion-select-option value="y">Visible</ion-select-option>
-              <ion-select-option value="n">Hidden</ion-select-option>
-            </ion-select>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
 
 
   </ion-list>
 
-  </app-container>
 
 </ion-content>
