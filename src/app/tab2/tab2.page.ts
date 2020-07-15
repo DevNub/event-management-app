@@ -23,8 +23,17 @@ export class Tab2Page {
 
   }
 
-  constructor(private api:ApicallsService,private router: Router) {}
+  constructor(private api:ApicallsService,private router: Router,public popover:PopoverController) {}
 
+  async CreatePopover(ev: any) {
+     const popover = await this.popover.create({
+       component: PopoverComponentPage,
+       cssClass: 'my-custom-class',
+       event: ev,
+       translucent: true
+     });
+     return await popover.present();
+   }
 
   createEvent(){
 
@@ -66,18 +75,5 @@ export class Tab2Page {
     this.event.file = file;
 
   };
-
-  constructor(public popover:PopoverController)
-   {
-    }
-    async CreatePopover(ev: any) {
-     const popover = await this.popover.create({
-       component: PopoverComponentPage,
-       cssClass: 'my-custom-class',
-       event: ev,
-       translucent: true
-     });
-     return await popover.present();
-   }
 
 }

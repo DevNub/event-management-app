@@ -16,7 +16,7 @@ export class Tab1Page implements OnInit {
   visible: Observable<any>;
   hidden: Observable<any>;
 
-  constructor(private api: ApicallsService) {}
+  constructor(private api: ApicallsService,public popover:PopoverController) {}
 
   ngOnInit() {
 
@@ -30,6 +30,16 @@ export class Tab1Page implements OnInit {
    this.hidden =  this.api.getEvents().pipe(map(data=> data.events.filter((res:any)=> res.visibility != true)))
 
 
+  }
+
+  async CreatePopover(ev: any) {
+    const popover = await this.popover.create({
+      component: PopoverComponentPage,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 
   async getImg(flyer:string){
@@ -53,17 +63,6 @@ export class Tab1Page implements OnInit {
   })
 
 
-  constructor(public popover:PopoverController)
-   {
-    }
-    async CreatePopover(ev: any) {
-     const popover = await this.popover.create({
-       component: PopoverComponentPage,
-       cssClass: 'my-custom-class',
-       event: ev,
-       translucent: true
-     });
-     return await popover.present();
-   }
+
 
 }
