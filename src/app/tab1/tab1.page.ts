@@ -15,8 +15,11 @@ export class Tab1Page implements OnInit {
   events: Observable<any>;
   visible: Observable<any>;
   hidden: Observable<any>;
+  image: String;
 
-  constructor(private api: ApicallsService,public popover:PopoverController) {}
+  constructor(private api: ApicallsService,public popover:PopoverController) {
+    this.image = "../../assets/imgs/icon.png";
+  }
 
   ngOnInit() {
 

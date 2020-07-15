@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-thumbnail slot="start">
+      <img [src]="image" />
+    </ion-thumbnail>
     <ion-title slot="start">
       Events
     </ion-title>
@@ -9,19 +12,11 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title slot="start" size="large">Events</ion-title>
-    </ion-toolbar>
-    <ion-button [routerLink]="['/logout']" slot="end" size="large" color="danger">
-      logout
-    </ion-button>
-  </ion-header>
-
-
     <ion-header translucent>
       <ion-toolbar>
         <!--ion-list class="ion-align-items-center">
@@ -44,8 +39,8 @@
   <!-- List of Sliding Items -->
   <ion-list>
     <ion-item-sliding *ngFor="let event of (events|async);let i = index;">
+      <ion-card>
       <ion-item >
-
         <ion-thumbnail slot="start">
           <img [src]="event.flyer|async">
         </ion-thumbnail>
@@ -53,10 +48,12 @@
           <h2>{{ event.title }}</h2>
           <h3>Category: {{ event.type }}</h3>
           <p>Description: {{ event.description }} </p>
-          <p>Cost: {{ event.cost }} </p>
+          <p>Cost: <span>${{event.cost}}.00</span> </p>
           <p>Venue: {{ event.venue }}</p>
-          <p>Date: {{ dateConvert(event.start_date) }}</p>
-          <p>Date: {{ dateConvert(event.end_date) }}</p>
+          <p>
+            {{ dateConvert(event.start_date) }} - {{
+            dateConvert(event.end_date) }}
+          </p>
         </ion-label>
         <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
       </ion-item>
@@ -67,8 +64,9 @@
               <ion-select-option value="y">Visible</ion-select-option>
               <ion-select-option value="n">Hidden</ion-select-option>
             </ion-select>
-        </ion-item-option>
-      </ion-item-options>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-card>
     </ion-item-sliding>
 
 
@@ -76,6 +74,4 @@
 
 
   </ion-list>
-
-
 </ion-content>

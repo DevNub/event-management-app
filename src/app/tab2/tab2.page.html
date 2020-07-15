@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-thumbnail slot="start">
+      <img [src]="image" />
+    </ion-thumbnail>
     <ion-title slot="start">
-      Create New Event
+      New Event
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="CreatePopover($event)">
@@ -11,60 +14,57 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title slot="start" size="large">Create New Event</ion-title>
-      <ion-button [routerLink]="['/logout']" slot="end" size="large" color="danger">
-        logout
-      </ion-button>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content [fullscreen]="true" class="ion-padding">
+  <br />
+  <img id="calendar" [src]="calendar" />
+  <br>
+  <h4>Create an Event,</h4>
+  <div class="fade">just fill out the details below.</div>
+  <br />
   <form>
-    <ion-item lines="full">
-      <ion-label position="floating">Title</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-label position="stacked">Title</ion-label>
       <ion-input [(ngModel)]="event.title" name="title" type="text" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Description</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-label position="stacked">Description</ion-label>
       <ion-textarea [(ngModel)]="event.description" name="description" type="textarea" required></ion-textarea>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Category</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-label position="stacked">Category</ion-label>
       <ion-input [(ngModel)]="event.category" name="category" type="text" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Start Date</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-label position="stacked">Start Date</ion-label>
       <ion-datetime [(ngModel)]="event.startDate" displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="startDate"  required></ion-datetime>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">End Date</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-label position="stacked">End Date</ion-label>
       <ion-datetime [(ngModel)]="event.endDate"  displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="endDate" required></ion-datetime>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Cost</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-label position="stacked">Cost</ion-label>
       <ion-input [(ngModel)]="event.cost"   name="cost" type="number" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Venue</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-label position="stacked">Venue</ion-label>
       <ion-input [(ngModel)]="event.venue " name="venue" type="text" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Flyer</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-label position="stacked">Flyer</ion-label>
       <ion-input (input)="loadImageFromDevice($event)" slot="end" type="file" accept="image/*" required></ion-input>
     </ion-item>
-
+    <br>
     <ion-row>
       <ion-col>
-        <ion-button (click)="createEvent()" color="danger" expand="block">Create Event</ion-button>
+        <ion-button (click)="createEvent()" expand="block">Create Event</ion-button>
       </ion-col>
     </ion-row>
   </form>
