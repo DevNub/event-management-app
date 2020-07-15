@@ -39,8 +39,14 @@ export class Tab2Page {
 
     this.api.submitForm(form).subscribe(res=>{
       
-      //success
-      this.router.navigate(["/tabs/tab1"])
+      if (!res.errors){
+        //success
+        this.router.navigate(["/tabs/tab1"])
+      }else{
+        console.log(res.errors)
+      }
+      
+      
 
     },err => console.log('HTTP Error', err),
     () => console.log('HTTP request completed.'))

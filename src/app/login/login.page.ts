@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ApicallsService } from "../services/apicalls.service";
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

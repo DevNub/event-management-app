@@ -19,7 +19,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <form>
+  <form (submit)="createEvent()">
     <ion-item lines="full">
       <ion-label position="floating">Title</ion-label>
       <ion-input [(ngModel)]="event.title" name="title" type="text" required></ion-input>
@@ -37,12 +37,12 @@
 
     <ion-item lines="full">
       <ion-label position="floating">Start Date</ion-label>
-      <ion-datetime [(ngModel)]="event.startDate" displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="startDate"  required></ion-datetime>
+      <ion-datetime [(ngModel)]="event.startDate" displayFormat="D MMM YYYY H:mm" min="1997" value="2020-07-15T04:04:22.560Z" name="startDate"  required></ion-datetime>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">End Date</ion-label>
-      <ion-datetime [(ngModel)]="event.endDate"  displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="endDate" required></ion-datetime>
+      <ion-datetime [(ngModel)]="event.endDate"  displayFormat="D MMM YYYY H:mm" min="1997" value="2020-07-15T04:04:22.560Z" name="endDate" required></ion-datetime>
     </ion-item>
 
     <ion-item lines="full">
@@ -62,7 +62,7 @@
 
     <ion-row>
       <ion-col>
-        <ion-button (click)="createEvent()" color="danger" expand="block">Create Event</ion-button>
+        <ion-button type="submit" color="danger" expand="block">Create Event</ion-button>
       </ion-col>
     </ion-row>
   </form>
