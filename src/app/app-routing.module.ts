@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'logout',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'registration',
