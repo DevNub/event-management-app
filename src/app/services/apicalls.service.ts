@@ -81,10 +81,12 @@ export class ApicallsService {
     
   }
 
-  public changeVis(id:number,val:boolean):Observable<any> {
+  public changeVis(id:number,val:string):Observable<any> {
 
     const token = this.getoken();
-    return this.http.put(`${this.url}/event/${id}`,{visibility:val},{headers:{mode:"cors","x-access-token":token}})
+    const form = new FormData()
+    form.append("visibility",val)
+    return this.http.put(`${this.url}/event/${id}`,form,{headers:{mode:"cors","x-access-token":token}})
   }
 
   /**
@@ -118,5 +120,29 @@ export class ApicallsService {
     this.url = (this.platform.is("hybrid"))? "http://10.0.2.2:5000":"http://localhost:5000"
     // this.url =(this.platform.is("mobile"))? "http://192.168.56.1:5000":"http://localhost:5000"
    }
+
+
+   //==============================User apis ====================================
+
+   /**
+    * User is a class defined in the models folder.
+    * @param user user object 
+    * @example { "firstname": "Percy", "lastname": "Jackson","email":"olympusrules@hb.com","password": "riptide"}
+    * 
+    */
+   registerUser(user: Object):Observable<any> {
+    
+    return this.http.post(`${this.url}/user`, user, {headers:{mode:"cors"}});
+  }
+
+  /**
+   * get all users
+   */
+  getUsers():Observable<any> {
+
+    const token = this.getoken();
+    return this.http.get(`${this.url}/user`, {headers:{mode:"cors","x-access-token":token}});
+  }
+
 
 }
