@@ -87,10 +87,10 @@ export class Tab1Page implements OnInit{
     console.log("in selected")
     console.log(id)
     console.log(hidden_vis)
+    console.log( typeof(hidden_vis))
 
-    var isTrueSet = (hidden_vis == 'true');
-
-    this.api.changeVis(parseInt( id),isTrueSet).subscribe(res=>{
+    
+    this.api.changeVis(parseInt( id),hidden_vis).subscribe(res=>{
       console.log("done")
       console.log(res)
     })

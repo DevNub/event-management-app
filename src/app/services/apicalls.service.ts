@@ -81,10 +81,12 @@ export class ApicallsService {
     
   }
 
-  public changeVis(id:number,val:boolean):Observable<any> {
+  public changeVis(id:number,val:string):Observable<any> {
 
     const token = this.getoken();
-    return this.http.put(`${this.url}/event/${id}`,{visibility:val},{headers:{mode:"cors","x-access-token":token}})
+    const form = new FormData()
+    form.append("visibility",val)
+    return this.http.put(`${this.url}/event/${id}`,form,{headers:{mode:"cors","x-access-token":token}})
   }
 
   /**
