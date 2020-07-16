@@ -35,4 +35,14 @@ export class UserService {
     return this.http.get(`${this.endpointURL}/${userid}`, {headers:{mode:"cors","x-access-token":token}});
   }
 
+  makeUserAdmin(userid:number) {
+    const token = this.getoken();;
+    return this.http.put(`${this.endpointURL}/${userid}`, {headers:{mode:"cors","x-access-token":token}});
+  }
+
+  deleteUser(userid:number) {
+    const token = this.getoken();;
+    return this.http.delete(`${this.endpointURL}/${userid}`, {headers:{mode:"cors","x-access-token":token}});
+  }
+
 }
