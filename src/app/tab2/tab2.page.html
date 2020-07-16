@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" *ngIf="!isDesktop">
   <ion-toolbar>
     <ion-thumbnail slot="start">
       <img [src]="image" />
@@ -14,7 +14,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" class="ion-padding" *ngIf="!isDesktop">
   <br />
   <img id="calendar" [src]="calendar" />
   <br>
@@ -69,3 +69,83 @@
     </ion-row>
   </form>
 </ion-content>
+
+<div *ngIf="isDesktop" class="desktop">
+  <ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid>
+  <ion-row>
+    <ion-col size="4">
+      <div>
+
+      </div>
+    </ion-col>
+
+    <ion-col size="4">
+      <ion-row>
+        <img id="calendar" [src]="calendar" />
+      </ion-row>
+        <br>
+        <h4>Create an Event,</h4>
+        <div class="fade">just fill out the details below.</div>
+      <form>
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-label position="stacked">Title</ion-label>
+          <ion-input [(ngModel)]="event.title" name="title" type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-label position="stacked">Description</ion-label>
+          <ion-textarea [(ngModel)]="event.description" name="description" type="textarea" required></ion-textarea>
+        </ion-item>
+
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-label position="stacked">Category</ion-label>
+          <ion-input [(ngModel)]="event.category" name="category" type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-label position="stacked">Start Date</ion-label>
+          <ion-datetime [(ngModel)]="event.startDate" displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="startDate"  required></ion-datetime>
+        </ion-item>
+
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-label position="stacked">End Date</ion-label>
+          <ion-datetime [(ngModel)]="event.endDate"  displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="endDate" required></ion-datetime>
+        </ion-item>
+
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-label position="stacked">Cost</ion-label>
+          <ion-input [(ngModel)]="event.cost"   name="cost" type="number" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-label position="stacked">Venue</ion-label>
+          <ion-input [(ngModel)]="event.venue " name="venue" type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-label position="stacked">Flyer</ion-label>
+          <ion-input (input)="loadImageFromDevice($event)" slot="end" type="file" accept="image/*" required></ion-input>
+        </ion-item>
+        <br>
+        <ion-row>
+          <ion-col>
+            <ion-button (click)="createEvent()" expand="block">Create Event</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-col>
+
+    <ion-col size="4">
+      <div>
+
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
+  <div class="footer">
+    © 2020 Order1.EXE
+  </div>
+</div>

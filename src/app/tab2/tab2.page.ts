@@ -28,7 +28,8 @@ export class Tab2Page {
   constructor(
     private api: ApicallsService,
     private router: Router,
-    public popover: PopoverController
+    public popover: PopoverController,
+    private screensizeService: ScreensizeService
   ) {
     this.image = "../../assets/imgs/icon.png";
     this.calendar = "../../assets/imgs/calendar.svg";
