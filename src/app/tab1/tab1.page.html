@@ -1,24 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-thumbnail slot="start">
-      <img [src]="image" />
-    </ion-thumbnail>
-    <ion-title slot="start">
-      Events
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="CreatePopover($event)">
-        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!isDesktop"> <!-- only display if is not desktop -->
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-thumbnail slot="start">
+        <img [src]="image" />
+      </ion-thumbnail>
+      <ion-title slot="start">
+        Events
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="CreatePopover($event)">
+          <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
     <ion-header translucent>
-      <ion-toolbar>
-        <!--ion-list class="ion-align-items-center">
-        <!-- Searchbar with cancel button shown on focus -->
-        <ion-searchbar style="max-width:300px" slot="start" showCancelButton="focus"></ion-searchbar>
+      <ion-toolbar class="segment">
+        <!--ion-list class="ion-align-items-center"-->
+
           <ion-segment slot="start" value="all">
             <ion-segment-button value="all">
               <ion-label>All</ion-label>
@@ -43,7 +42,7 @@
         </ion-thumbnail>
         <ion-label>
           <h2>{{ event.title }}</h2>
-          <h3>Category: {{ event.type }}</h3>
+          <h3>Category: {{ event.category }}</h3>
           <p>Description: {{ event.description }} </p>
           <p>Cost: <span>${{event.cost}}.00</span> </p>
           <p>Venue: {{ event.venue }}</p>
@@ -66,9 +65,154 @@
       </ion-card>
     </ion-item-sliding>
 
+    <ion-item-sliding>
+      <ion-card>
+      <ion-item >
 
+          <img slot="start" style="width:200px" src="./assets/imgs/event1.jpg">
 
-
+        <ion-label>
+          <h2>Lights Festival</h2>
+          <h3>Category: Concert</h3>
+          <p>Description: Some kind of event </p>
+          <p>Cost: <span>$200.00</span> </p>
+          <p>Venue: Waterfront</p>
+          <p>Date</p>
+        </ion-label>
+        <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option>
+            <ion-label>Visibility</ion-label>
+            <ion-select value="n" cancelText="Cancel" okText="Confirm">
+              <ion-select-option value="y">Visible</ion-select-option>
+              <ion-select-option value="n">Hidden</ion-select-option>
+            </ion-select>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-card>
+    </ion-item-sliding>
 
   </ion-list>
 </ion-content>
+
+
+<div *ngIf="isDesktop" class="desktop">
+  <ion-toolbar class="segment">
+    <!--ion-list class="ion-align-items-center"-->
+
+      <ion-segment slot="start" value="all">
+        <ion-segment-button value="all">
+          <ion-label>All</ion-label>
+          <ion-badge>{{(visible | async)?.length}} </ion-badge>
+        </ion-segment-button>
+        <ion-segment-button value="hidden">
+          <ion-label>Hidden</ion-label>
+          <ion-badge color="warning">{{(hidden | async)?.length}}</ion-badge>
+        </ion-segment-button>
+      </ion-segment>
+    <!--/ion-list -->
+  </ion-toolbar>
+  <ion-toolbar class="segment">
+    <!--ion-list class="ion-align-items-center"-->
+
+      <ion-segment slot="start" value="all">
+        <ion-segment-button value="all">
+          <ion-label>All</ion-label>
+          <ion-badge>{{(visible | async)?.length}} </ion-badge>
+        </ion-segment-button>
+        <ion-segment-button value="hidden">
+          <ion-label>Hidden</ion-label>
+          <ion-badge color="warning">{{(hidden | async)?.length}}</ion-badge>
+        </ion-segment-button>
+      </ion-segment>
+    <!--/ion-list -->
+  </ion-toolbar>
+  <ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-grid>
+    <ion-row size="2">
+
+    </ion-row>
+  <ion-row size="10">
+
+    <ion-col size="8">
+      <ion-header translucent>
+
+      </ion-header>
+
+    <!-- List of Sliding Items -->
+    <ion-list>
+      <ion-item-sliding *ngFor="let event of (events|async);let i = index;">
+        
+        <ion-item >
+          <ion-thumbnail slot="start">
+            <img [src]="event.flyer|async">
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ event.title }}</h2>
+            <h3>Category: {{ event.category }}</h3>
+            <p>Description: {{ event.description }} </p>
+            <p>Cost: <span>${{event.cost}}.00</span> </p>
+            <p>Venue: {{ event.venue }}</p>
+            <p>
+              {{ dateConvert(event.start_date) }} - {{
+              dateConvert(event.end_date) }}
+            </p>
+          </ion-label>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option>
+              <ion-label>Visibility</ion-label>
+              <ion-select value="n" cancelText="Cancel" okText="Confirm">
+                <ion-select-option value="y">Visible</ion-select-option>
+                <ion-select-option value="n">Hidden</ion-select-option>
+              </ion-select>
+            </ion-item-option>
+          </ion-item-options>
+
+      </ion-item-sliding>
+
+      <ion-item-sliding>
+
+        <ion-item >
+
+            <img slot="start" style="width:200px" src="./assets/imgs/event1.jpg">
+
+          <ion-label>
+            <h2>Lights Festival</h2>
+            <h3>Category: Concert</h3>
+            <p>Description: Some kind of event </p>
+            <p>Cost: <span>$200.00</span> </p>
+            <p>Venue: Waterfront</p>
+            <p>Date</p>
+          </ion-label>
+          <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option>
+              <ion-label>Visibility</ion-label>
+              <ion-select value="n" cancelText="Cancel" okText="Confirm">
+                <ion-select-option value="y">Visible</ion-select-option>
+                <ion-select-option value="n">Hidden</ion-select-option>
+              </ion-select>
+            </ion-item-option>
+          </ion-item-options>
+
+      </ion-item-sliding>
+
+    </ion-list>
+    </ion-col>
+
+    <ion-col size="4">
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
+  <div class="footer">
+    © 2020 Order1.EXE
+  </div>
+</div>
