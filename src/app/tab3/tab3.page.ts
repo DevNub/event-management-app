@@ -10,12 +10,14 @@ import { ScreensizeService } from '../services/screensize.service';
 })
 export class Tab3Page {
   isDesktop: boolean;
+  logo: String
   constructor(public popover:PopoverController,private screensizeService: ScreensizeService)
    {
      this.screensizeService.isDesktopView().subscribe(isDesktop => {
        console.log('Is desktop changed: ', isDesktop);
        this.isDesktop = isDesktop;
      });
+     this.logo = "../../assets/imgs/icon.png";
     }
     async CreatePopover(ev: any) {
      const popover = await this.popover.create({
