@@ -121,4 +121,28 @@ export class ApicallsService {
     // this.url =(this.platform.is("mobile"))? "http://192.168.56.1:5000":"http://localhost:5000"
    }
 
+
+   //==============================User apis ====================================
+
+   /**
+    * User is a class defined in the models folder.
+    * @param user user object 
+    * @example { "firstname": "Percy", "lastname": "Jackson","email":"olympusrules@hb.com","password": "riptide"}
+    * 
+    */
+   registerUser(user: Object):Observable<any> {
+    
+    return this.http.post(`${this.url}/user`, user, {headers:{mode:"cors"}});
+  }
+
+  /**
+   * get all users
+   */
+  getUsers():Observable<any> {
+
+    const token = this.getoken();
+    return this.http.get(`${this.url}/user`, {headers:{mode:"cors","x-access-token":token}});
+  }
+
+
 }
