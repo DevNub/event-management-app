@@ -4,6 +4,7 @@ import { PopoverComponentPage } from '../popover-component/popover-component.pag
 import { ApicallsService } from "../services/apicalls.service";
 import { Observable } from 'rxjs';
 import { map, filter } from "rxjs/operators";
+import { ScreensizeService } from '../services/screensize.service';
 
 @Component({
   selector: 'app-tab1',
@@ -16,9 +17,14 @@ export class Tab1Page implements OnInit {
   visible: Observable<any>;
   hidden: Observable<any>;
   image: String;
+  isDesktop: boolean;
 
-  constructor(private api: ApicallsService,public popover:PopoverController) {
+  constructor(private api: ApicallsService,public popover:PopoverController,private screensizeService: ScreensizeService) {
     this.image = "../assets/imgs/icon.png";
+    this.screensizeService.isDesktopView().subscribe(isDesktop => {
+      console.log('Is desktop changed: ', isDesktop);
+      this.isDesktop = isDesktop;
+    });
   }
 
   ngOnInit() {

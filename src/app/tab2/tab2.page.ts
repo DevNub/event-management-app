@@ -31,20 +31,24 @@ export class Tab2Page {
     this.image = "../../assets/imgs/icon.png";
     this.calendar = "../../assets/imgs/calendar.svg";
   }
-
+  
   async CreatePopover(ev: any) {
-    const popover = await this.popover.create({
-      component: PopoverComponentPage,
-      cssClass: "my-custom-class",
-      event: ev,
-      translucent: true,
-    });
-    return await popover.present();
-  }
+     const popover = await this.popover.create({
+       component: PopoverComponentPage,
+       cssClass: 'my-custom-class',
+       event: ev,
+       translucent: true
+     });
+     return await popover.present();
+   }
+
+
+
+
+
 
   createEvent() {
-    image: String;
-    calendar: String;
+
     console.log(this.event);
     let form = new FormData();
     form.append("title", this.event.title);
