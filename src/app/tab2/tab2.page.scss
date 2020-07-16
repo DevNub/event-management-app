@@ -23,20 +23,19 @@ ion-item > ion-label {
   font-weight: bold;
 }
 
-
 img.calendar {
-  height: 20%;
-  display: block;
+  max-height: 10rem;
   margin-left: auto;
   margin-right: auto;
+  display: block;
+  margin-top: 15%;
 }
 
-div.desktop img.calendar {
-    max-height: 10rem;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top: 15%;
+img.mobile-img {
+  height: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 div.fade {
