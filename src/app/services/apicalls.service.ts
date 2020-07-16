@@ -81,6 +81,12 @@ export class ApicallsService {
     
   }
 
+  public changeVis(id:number,val:boolean):Observable<any> {
+
+    const token = this.getoken();
+    return this.http.put(`${this.url}/event/${id}`,{visibility:val},{headers:{mode:"cors","x-access-token":token}})
+  }
+
   /**
    * deleteEvent
    *  @param id
@@ -109,7 +115,7 @@ export class ApicallsService {
   constructor(private http: HttpClient,platform: Platform) {
     this.platform = platform;
     // this.url = (!this.platform.is("hybrid"))? "http://10.0.2.2":"http://localhost:5000"
-    this.url =(this.platform.is("mobile"))? "http://10.0.2.2:5000":"http://localhost:5000"
+    this.url = (this.platform.is("hybrid"))? "http://10.0.2.2:5000":"http://localhost:5000"
     // this.url =(this.platform.is("mobile"))? "http://192.168.56.1:5000":"http://localhost:5000"
    }
 

@@ -21,7 +21,7 @@
   <h4>Create an Event,</h4>
   <div class="fade">just fill out the details below.</div>
   <br />
-  <form>
+  <form (submit)="createEvent()">
     <ion-item lines="full" class="ion-no-margin ion-no-padding">
       <ion-label position="stacked">Title</ion-label>
       <ion-input [(ngModel)]="event.title" name="title" type="text" required></ion-input>
@@ -39,12 +39,12 @@
 
     <ion-item lines="full" class="ion-no-margin ion-no-padding">
       <ion-label position="stacked">Start Date</ion-label>
-      <ion-datetime [(ngModel)]="event.startDate" displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="startDate"  required></ion-datetime>
+      <ion-datetime [(ngModel)]="event.startDate" displayFormat="D MMM YYYY h:mm" min="1997" value="2005-06-17T11:06Z" name="startDate"  required></ion-datetime>
     </ion-item>
 
     <ion-item lines="full" class="ion-no-margin ion-no-padding">
       <ion-label position="stacked">End Date</ion-label>
-      <ion-datetime [(ngModel)]="event.endDate"  displayFormat="D MMM YYYY H:mm" min="1997" value="2005-06-17T11:06Z" name="endDate" required></ion-datetime>
+      <ion-datetime [(ngModel)]="event.endDate"  displayFormat="D MMM YYYY h:mm" min="1997" value="2005-06-17T11:06Z" name="endDate" required></ion-datetime>
     </ion-item>
 
     <ion-item lines="full" class="ion-no-margin ion-no-padding">

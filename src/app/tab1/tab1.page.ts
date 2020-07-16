@@ -16,6 +16,7 @@ export class Tab1Page implements OnInit{
   visible: Observable<any>;
   hidden: Observable<any>;
   image: String;
+  hidden_visible = "";
 
   constructor(private api: ApicallsService,public popover:PopoverController) {
     this.image = "../assets/imgs/icon.png";
@@ -81,6 +82,21 @@ export class Tab1Page implements OnInit{
 
   }
 
+  selected(hidden_vis:string,id:string){
+
+    console.log("in selected")
+    console.log(id)
+    console.log(hidden_vis)
+
+    var isTrueSet = (hidden_vis == 'true');
+
+    this.api.changeVis(parseInt( id),isTrueSet).subscribe(res=>{
+      console.log("done")
+      console.log(res)
+    })
+    
+
+  }
   
 
 }

@@ -16,8 +16,8 @@ export class Tab2Page {
     venue: "",
     cost: 0,
     description: "",
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: "",
+    endDate: "",
     file: ""
 
   }
