@@ -23,68 +23,36 @@
   <!-- only display if is not desktop -->
   <div *ngIf="!isDesktop">
     <!-- List of Sliding Items -->
-    <ion-list>
-      <ion-item-sliding *ngFor="let event of (events|async);let i = index;">
-        <ion-card>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img [src]="event.flyer|async" />
-            </ion-thumbnail>
-            <ion-label>
-              <h2>{{ event.title }}</h2>
-              <h3>Category: {{ event.category }}</h3>
-              <p>Description: {{ event.description }}</p>
-              <p>Cost: <span>${{event.cost}}.00</span></p>
-              <p>Venue: {{ event.venue }}</p>
-              <p>
-                {{ dateConvert(event.start_date) }} - {{
-                dateConvert(event.end_date) }}
-              </p>
-            </ion-label>
-            <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-          </ion-item>
-          <ion-item-options>
-            <ion-item-option>
-              <ion-label>Visibility</ion-label>
-              <ion-select value="n" cancelText="Cancel" okText="Confirm">
-                <ion-select-option value="y">Visible</ion-select-option>
-                <ion-select-option value="n">Hidden</ion-select-option>
-              </ion-select>
-            </ion-item-option>
-          </ion-item-options>
-        </ion-card>
-      </ion-item-sliding>
-
-      <ion-item-sliding>
-        <ion-card>
-          <ion-item>
-            <img
-              slot="start"
-              style="width: 200px;"
-              src="./assets/imgs/event1.jpg"
-            />
-
-            <ion-label>
-              <h2>Lights Festival</h2>
-              <h3>Category: Concert</h3>
-              <p>Description: Some kind of event</p>
-              <p>Cost: <span>$200.00</span></p>
-              <p>Venue: Waterfront</p>
-              <p>Date</p>
-            </ion-label>
-            <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-          </ion-item>
-          <ion-item-options>
-            <ion-item-option>
-              <ion-label>Visibility</ion-label>
-              <ion-select value="n" cancelText="Cancel" okText="Confirm">
-                <ion-select-option value="y">Visible</ion-select-option>
-                <ion-select-option value="n">Hidden</ion-select-option>
-              </ion-select>
-            </ion-item-option>
-          </ion-item-options>
-        </ion-card>
-      </ion-item-sliding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let event of (events|async);let i = index;">
+      <ion-card>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img [src]="event.flyer|async" />
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ event.title }}</h2>
+            <h3>{{ event.category }}</h3>
+            <p>{{ event.description }}</p>
+            <p class="cost">Cost: <span>${{event.cost}}.00</span></p>
+            <p>Venue: {{ event.venue }}</p>
+            <p>
+              {{ dateConvert(event.start_date) }} - {{
+              dateConvert(event.end_date) }}
+            </p>
+          </ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option>
+            <ion-label>Visibility</ion-label>
+            <ion-select value="n" cancelText="Cancel" okText="Confirm">
+              <ion-select-option value="y">Visible</ion-select-option>
+              <ion-select-option value="n">Hidden</ion-select-option>
+            </ion-select>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-card>
+    </ion-item-sliding>
     </ion-list>
   </div>
 
@@ -93,7 +61,6 @@
       <ion-row size="2"> </ion-row>
       <ion-row size="10">
         <ion-col size="8">
-          <ion-header translucent> </ion-header>
 
           <!-- List of Sliding Items -->
           <ion-list>
@@ -162,8 +129,5 @@
         <ion-col size="4"> </ion-col>
       </ion-row>
     </ion-grid>
-    <div class="footer">
-      © 2020 Order1.EXE
-    </div>
   </div>
 </ion-content>
