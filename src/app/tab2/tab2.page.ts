@@ -3,6 +3,7 @@ import { PopoverController } from "@ionic/angular";
 import { PopoverComponentPage } from "../popover-component/popover-component.page";
 import { ApicallsService } from "../services/apicalls.service";
 import { Router } from "@angular/router";
+import { ScreensizeService } from '../services/screensize.service';
 
 @Component({
   selector: "app-tab2",
@@ -22,6 +23,7 @@ export class Tab2Page {
   };
   image: String;
   calendar: String;
+  isDesktop: boolean;
 
   constructor(
     private api: ApicallsService,
@@ -30,8 +32,13 @@ export class Tab2Page {
   ) {
     this.image = "../../assets/imgs/icon.png";
     this.calendar = "../../assets/imgs/calendar.svg";
+
+    this.screensizeService.isDesktopView().subscribe(isDesktop => {
+      console.log('Is desktop changed: ', isDesktop);
+      this.isDesktop = isDesktop;
+    });
   }
-  
+
   async CreatePopover(ev: any) {
      const popover = await this.popover.create({
        component: PopoverComponentPage,
