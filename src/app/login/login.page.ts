@@ -27,10 +27,12 @@ export class LoginPage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-  navigateToMain() {
-    console.log(this.usercred);
+  navigateToMain(){
+    console.log("android")
+    console.log(this.usercred)
     // this.router.navigate(["/tabs"])
 
     this.login = this.api
