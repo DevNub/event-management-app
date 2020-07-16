@@ -22,6 +22,7 @@
 <ion-content [fullscreen]="true">
   <!-- only display if is not desktop -->
   <div *ngIf="!isDesktop">
+
     <!-- List of Sliding Items -->
     <ion-list>
       <ion-item-sliding *ngFor="let event of (events|async);let i = index;">
@@ -90,7 +91,7 @@
 
   <div *ngIf="isDesktop" class="desktop">
     <ion-grid>
-      <ion-row size="2"> </ion-row>
+      <ion-row size="2"> <img src="./assets/imgs/filler.jpg"></ion-row>
       <ion-row size="10">
         <ion-col size="8">
           <ion-header translucent> </ion-header>
@@ -162,8 +163,7 @@
         <ion-col size="4"> </ion-col>
       </ion-row>
     </ion-grid>
-    <div class="footer">
-      © 2020 Order1.EXE
-    </div>
+    <br/>
+    <br/>
   </div>
 </ion-content>
