@@ -3,6 +3,10 @@ ion-toolbar {
   //   --background: white;
 }
 
+ion-header.header {
+  --background: #23a2a8;
+}
+
 h2 {
   color: #173f5e;
   font-weight: bold;
@@ -20,4 +24,8 @@ ion-item > ion-label {
 .cost {
   color: #173f5e;
   font-weight: bold;
+}
+
+ion-button.md.button.button-clear.in-toolbar.button-has-icon-only.ion-activatable.ion-focusable.hydrated {
+  color: #23a2a8;
 }

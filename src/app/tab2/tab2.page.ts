@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
-import { PopoverComponentPage } from '../popover-component/popover-component.page';
+import { Component } from "@angular/core";
+import { PopoverController } from "@ionic/angular";
+import { PopoverComponentPage } from "../popover-component/popover-component.page";
 import { ApicallsService } from "../services/apicalls.service";
 import { Router } from "@angular/router";
 
@@ -18,29 +18,29 @@ export class Tab2Page {
     description: "",
     startDate: new Date(),
     endDate: new Date(),
-    file: ""
+    file: "",
+  };
+  image: String;
+  calendar: String;
 
-  }
-
-  constructor(private api:ApicallsService,private router: Router,public popover:PopoverController) {
+  constructor(
+    private api: ApicallsService,
+    private router: Router,
+    public popover: PopoverController
+  ) {
     this.image = "../../assets/imgs/icon.png";
     this.calendar = "../../assets/imgs/calendar.svg";
   }
 
   async CreatePopover(ev: any) {
-     const popover = await this.popover.create({
-       component: PopoverComponentPage,
-       cssClass: 'my-custom-class',
-       event: ev,
-       translucent: true
-     });
-     return await popover.present();
-   }
-
-  
-
-
-
+    const popover = await this.popover.create({
+      component: PopoverComponentPage,
+      cssClass: "my-custom-class",
+      event: ev,
+      translucent: true,
+    });
+    return await popover.present();
+  }
 
   createEvent() {
     image: String;
@@ -81,7 +81,5 @@ export class Tab2Page {
     const file = event.target.files[0];
     console.log(file);
     this.event.file = file;
-
-  };
-
+  }
 }
