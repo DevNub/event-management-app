@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PopoverController} from '@ionic/angular';
+import { ApicallsService } from "../services/apicalls.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-popover-component',
@@ -8,7 +10,7 @@ import {PopoverController} from '@ionic/angular';
 })
 export class PopoverComponentPage implements OnInit {
 
-  constructor(public popover:PopoverController) { }
+  constructor(public popover:PopoverController,private api:ApicallsService,private router: Router) { }
 
   ngOnInit() {
   }
@@ -34,5 +36,20 @@ export class PopoverComponentPage implements OnInit {
     } else {
       document.body.setAttribute('data-theme', 'light');
     }
+  }
+
+  logout(){
+
+    
+    this.api.logout();
+    this.router.navigate(["/login"])
+    console.log("logout happened")
+    this.ClosePopover()
+
+  }
+
+  navigateToEvent(){
+    this.router.navigate(["/tabs/tab2"])
+    this.ClosePopover()
   }
 }

@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AuthGuard } from "./guards/auth.guard";
 import { PopoverComponentPageModule } from './popover-component/popover-component.module';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { PopoverComponentPageModule } from './popover-component/popover-componen
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, PopoverComponentPageModule, HttpClientModule],
   providers: [
     StatusBar,
+    AuthGuard,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

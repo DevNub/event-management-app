@@ -1,30 +1,33 @@
-<ion-content [fullscreen]="true" class="ion-padding">
-  <ion-img [src]="image"></ion-img>
-  <h2>Create Account</h2>
-  <br />
-  <form>
-    <ion-item lines="full" class="ion-no-margin ion-no-padding">
-      <ion-icon name="person-outline"></ion-icon>
-      <ion-label position="inline">First Name</ion-label>
-      <ion-input type="text" required></ion-input>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-img [src]="image"></ion-img>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="register()">
+    <ion-item lines="full">
+      <ion-label position="floating">First name</ion-label>
+      <ion-input type="text" name="firstname" [(ngModel)]="user.firstname" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full" class="ion-no-margin ion-no-padding">
-      <ion-icon name="person-outline"></ion-icon>
-      <ion-label position="inline">Last Name</ion-label>
-      <ion-input type="text" required></ion-input>
+    <ion-item lines="full">
+      <ion-label position="floating">Last name</ion-label>
+      <ion-input type="text" name="lastname" [(ngModel)]="user.lastname" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full" class="ion-no-margin ion-no-padding">
-      <ion-icon name="mail-outline"></ion-icon>
-      <ion-label position="inline">Email</ion-label>
-      <ion-input type="text" required></ion-input>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="user.email" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full" class="ion-no-margin ion-no-padding">
-      <ion-icon name="lock-open-outline"></ion-icon>
-      <ion-label position="inline">Password</ion-label>
-      <ion-input type="password" required></ion-input>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="user.password" required></ion-input>
     </ion-item>
 
     <br />
