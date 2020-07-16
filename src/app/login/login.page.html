@@ -1,26 +1,156 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-  <form >
-    <ion-item lines="full">
-      <ion-label position="floating">Username</ion-label>
-      <ion-input type="text" name="usernmae" [(ngModel)]="usercred.username" clearInput required></ion-input>
+<ion-content [fullscreen]="true" class="ion-padding" *ngIf="!isDesktop"> <!-- only display if is not desktop -->
+  <ion-img [src]="image"></ion-img>
+  <h2>Welcome,</h2>
+  <div class="fade">sign in to continue</div>
+  <br />
+  <br />
+  <form>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label position="inline">Username</ion-label>
+      <ion-input
+        type="text"
+        name="username"
+        [(ngModel)]="usercred.username"
+        password="enter email/username"
+        clearInput
+        required
+      ></ion-input>
     </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" name="password" [(ngModel)]="usercred.password" clearInput required></ion-input>
+    <br>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-icon name="lock-open-outline"></ion-icon>
+      <ion-label position="inline">Password</ion-label>
+      <ion-input
+        type="password"
+        name="password"
+        [(ngModel)]="usercred.password"
+        clearInput
+        required
+      ></ion-input>
     </ion-item>
-
+    <br>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" (click)="navigateToMain()" color="danger" expand="block">Login</ion-button>
+        <ion-button type="submit" (click)="navigateToMain()" expand="block"
+          >SIGN IN</ion-button
+        >
       </ion-col>
     </ion-row>
+    <br />
+    <br />
+    <div class="fade" style="text-align: center;">
+      Don't have an account as yet?
+    </div>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          type="submit"
+          (click)="navigateToMain()"
+          color="secondary"
+          fill="outline"
+          expand="block"
+          class="border-clr"
+          >CREATE ACCOUNT</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <br>
+    <div class="fade" style="text-align: center;">
+      TERMS & CONDITIONS
+    </div>
   </form>
 </ion-content>
+
+
+<div *ngIf="isDesktop" class="desktop">
+  <ion-content [fullscreen]="true" class="ion-padding">
+  <ion-row class="logo">
+    <ion-img [src]="image"></ion-img>
+  </ion-row>
+  <ion-grid>
+  <ion-row>
+    <ion-col>
+      <div>
+
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <ion-row>
+        <h2>Welcome,</h2>
+      </ion-row>
+      <div class="fade">sign in to continue</div>
+      <br />
+      <br />
+      <form>
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label position="inline">Username</ion-label>
+          <ion-input
+            type="text"
+            name="username"
+            [(ngModel)]="usercred.username"
+            password="enter email/username"
+            clearInput
+            required
+          ></ion-input>
+        </ion-item>
+        <br>
+        <ion-item lines="full" class="ion-no-margin ion-no-padding">
+          <ion-icon name="lock-open-outline"></ion-icon>
+          <ion-label position="inline">Password</ion-label>
+          <ion-input
+            type="password"
+            name="password"
+            [(ngModel)]="usercred.password"
+            clearInput
+            required
+          ></ion-input>
+        </ion-item>
+        <br>
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" (click)="navigateToMain()" expand="block"
+              >SIGN IN</ion-button
+            >
+          </ion-col>
+        </ion-row>
+        <br />
+        <br />
+        <div class="fade" style="text-align: center;">
+          Don't have an account as yet?
+        </div>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              type="submit"
+              (click)="navigateToMain()"
+              color="secondary"
+              fill="outline"
+              expand="block"
+              class="border-clr"
+              >CREATE ACCOUNT</ion-button
+            >
+          </ion-col>
+        </ion-row>
+        <br>
+        <div class="fade" style="text-align: center;">
+          TERMS & CONDITIONS
+        </div>
+      </form>
+    </ion-col>
+
+    <ion-col>
+      <div>
+
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
+  <div class="footer">
+    © 2020 Order1.EXE
+  </div>
+</div>

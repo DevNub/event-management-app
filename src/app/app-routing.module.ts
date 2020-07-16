@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
   },
   {
+    path: 'popover-component',
+    loadChildren: () => import('./popover-component/popover-component.module').then( m => m.PopoverComponentPageModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
    

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponentPage } from '../popover-component/popover-component.page';
 import { ApicallsService } from "../services/apicalls.service";
 import { Observable, interval } from 'rxjs';
 import { map, switchMap} from "rxjs/operators";
@@ -13,29 +15,34 @@ export class Tab1Page implements OnInit{
   events: Observable<any>;
   visible: Observable<any>;
   hidden: Observable<any>;
+  image: String;
 
-  constructor(private api: ApicallsService) {}
- 
+  constructor(private api: ApicallsService,public popover:PopoverController) {
+    this.image = "../assets/imgs/icon.png";
+  }
+
   ngOnInit() {
 
     // this.api.getEvents().pipe(map(res=> res.events),filter(t=> t == t)).subscribe(res=> console.log(`ssv ${JSON.stringify(res)}`))
-   console.log("in init")
-  //  this.events = interval(1000).pipe(switchMap(res=>{
-  //    return this.api.getEvents().pipe(map(res=> {
-     
-  //     return res.events.map(res=> ({...res,"flyer":  this.getImg(res.flyer)}))
-  //     }))
-  //  }))
 
    this.events =  this.api.getEvents().pipe(map(res=> {
-     
-    console.log(this.getImg(res.flyer))
+
     return res.events.map(res=> ({...res,"flyer":  this.getImg(res.flyer)}))
     }))
    this.visible = this.api.getEvents().pipe(map(data=> data.events.filter((res: { visibility: boolean; })=> res.visibility == true)))
    this.hidden =  this.api.getEvents().pipe(map(data=> data.events.filter((res:any)=> res.visibility != true)))
-   
 
+
+  }
+
+  async CreatePopover(ev: any) {
+    const popover = await this.popover.create({
+      component: PopoverComponentPage,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 
   async getImg(flyer:string){
