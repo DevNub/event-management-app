@@ -1,0 +1,46 @@
+h2 {
+  color: #173f5e;
+  color: #23a2a8;
+  font-weight: bold;
+}
+
+.sign-in {
+  color: #173f5e;
+  color: #23a2a8;
+  font-weight: bold;
+}
+
+ion-img {
+  height: 8rem;
+  width: 10rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.fade {
+  font-size: 12px;
+  color: rgb(173, 171, 171);
+  line-height: 1rem;
+}
+
+ion-button {
+  --background: #23a2a8;
+}
+
+ion-button {
+  border-color: #23a2a8;
+}
+
+form > ion-item > ion-label {
+  font-size: 14px;
+}
+
+ion-icon {
+  margin-right: 1rem;
+  color: #23a2a8;
+}
+
+a {
+    text-decoration: none;
+}

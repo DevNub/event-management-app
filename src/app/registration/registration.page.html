@@ -1,38 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-img [src]="image"></ion-img>
+  <h2>Create Account</h2>
+  <br />
   <form>
-    <ion-item lines="full">
-      <ion-label position="floating">First name</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label position="inline">First Name</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Last name</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label position="inline">Last Name</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-label position="inline">Email</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
+    <ion-item lines="full" class="ion-no-margin ion-no-padding">
+      <ion-icon name="lock-open-outline"></ion-icon>
+      <ion-label position="inline">Password</ion-label>
       <ion-input type="password" required></ion-input>
     </ion-item>
 
+    <br />
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
+        <ion-button type="submit" expand="block">SIGN UP</ion-button>
       </ion-col>
     </ion-row>
+    <br />
+    <div class="fade" style="text-align: center;">
+      Already have an account as yet?
+      <a [routerLink]="['/login']" class="sign-in">Sign In</a>
+    </div>
+    <br />
+    <br />
   </form>
 </ion-content>

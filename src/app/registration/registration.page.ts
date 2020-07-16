@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationPage implements OnInit {
 
-  constructor() { }
+  image: String;
+  
+  constructor() {
+    this.image = "../../assets/imgs/icon.png";
+   }
 
   ngOnInit() {
   }

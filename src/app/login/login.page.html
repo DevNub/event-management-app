@@ -44,15 +44,7 @@
     </div>
     <ion-row>
       <ion-col>
-        <ion-button
-          type="submit"
-          (click)="navigateToMain()"
-          color="secondary"
-          fill="outline"
-          expand="block"
-          class="border-clr"
-          >CREATE ACCOUNT</ion-button
-        >
+        <ion-button [routerLink]="['/registration']" expand="block" color="secondary" class="border-clr" fill="outline">CREATE ACCOUNT</ion-button>
       </ion-col>
     </ion-row>
     <br>
